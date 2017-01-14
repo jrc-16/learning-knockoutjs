@@ -1,4 +1,10 @@
-Example of using text bindings
+Example of using value bindings
 ```html
-	data-bind="text: firstName"
+	data-bind="value: firstName"
 ```
+
+And knockout obserables
+```javascript
+	ko.observable("Hello");
+```
+

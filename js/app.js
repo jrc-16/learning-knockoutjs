@@ -2,10 +2,10 @@
  * This is a simple viewmodel - javascript that defines the data and behavior of your UI
  */
 
-// AppViewModel() sets properties which are declared in the text data binding in index.html
+// 'observables' are properties that automatically issue notifications when their values change
 function AppViewModel() {
-	this.firstName = "Bert";
-	this.lastName = "Bertington";
+	this.firstName = ko.observable("Bert");
+	this.lastName = ko.observable("Bertington");
 }
 
 // Activates knockout.js
