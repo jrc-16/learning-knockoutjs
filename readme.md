@@ -1,10 +1,7 @@
-Example of using value bindings
-```html
-	data-bind="value: firstName"
-```
-
-And knockout obserables
+Example of using knockout computed properties
 ```javascript
-	ko.observable("Hello");
+	this.fullName = ko.computed(function() {
+    	return this.firstName() + " " + this.lastName();    
+}, this);
 ```
 
