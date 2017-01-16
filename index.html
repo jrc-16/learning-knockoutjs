@@ -7,23 +7,26 @@
 <body>
 	<!-- 
 	/** 
-	 * The click binding adds an event handler so that your chosen JavaScript function will be invoked when the associated DOM element is clicked.
+	 * @TODO: add description as to what this html is/does
 	 */
 	-->
 
-	<!-- // firsName etc update in the UI thanks to KO observables -->
-	<p>First name: <strong data-bind="text: firstName"></strong></p>
-	<p>Last name: <strong data-bind="text: lastName"></strong></p>
+	<!-- // @TODO: add inline descriptions for what each pieace of html is/does -->
 
-	<!-- // firsName etc are value bindings -->
-	<p>First name: <input data-bind="value: firstName" /></p>
-	<p>Second name: <input data-bind="value: lastName" /></p>
+	<h2>Your seat reservations</h2>
 
-	<!-- // fullName is synchronised with the value of the fullName() computed value -->
-	<p>Full name: <strong data-bind="text: fullName"></strong></p>
+	<table>
+		<tbody data-bind="foreach: seats">
+		    <tr>
+		        <td data-bind="text: name"></td>
+		        <td data-bind="text: meal().mealName"></td>
+		        <td data-bind="text: meal().price"></td>
+		    </tr>
+		</tbody>
 
-	<!-- // Use KOs click binding to work with our viewmodel function-->
-	<button data-bind="click: capitalizeLastName">Go caps</button>
+	    <!-- Todo: Generate table body -->
+	</table>	
+	
 </body>
 <script type="text/javascript" src="js/knockout.js"></script>
 <script type="text/javascript" src="js/app.js"></script>

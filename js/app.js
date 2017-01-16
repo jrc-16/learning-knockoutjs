@@ -1,25 +1,33 @@
 /**
- * This is a simple viewmodel - javascript that defines the data and behavior of your UI
+ * @TODO: add description of what the below code is/does
  */
 
-/** 
- * Capitlise persons last name
+/**
+ * Class to represent a row in the seat reservations grid
+ * Notice we use upper case 'S' to denote a Constructor function
  */
-function AppViewModel() {
-	this.firstName = ko.observable("Bert");
-	this.lastName = ko.observable("Bertington");
-
-	this.fullName = ko.computed(function() {
-		return this.firstName() + " " + this.lastName();
-	}, this);
-
-	this.capitalizeLastName = function() {
-		// Get current lastName value: Notice that, to read or write an observable's value, you call it as a function.
-		var currentVal = this.lastName(); 
-		this.lastName(currentVal.toUpperCase()); // Set lastName to uppercase
-	}
+function SeatReservation(name, initalMeal) {
+	var self = this; // Set 'this' to this functions scope
+	self.name = name;
+	self.meal = ko.observable(initalMeal);
 }
 
-// Activates knockout.js
-ko.applyBindings(new AppViewModel());
+// Overall viewmodel for this screen, along with initial state
+function ReservationsViewModel() {
+	var self = this;
 
+	// Non editable catalog data - would come from the server
+	self.availableMeals = [
+		{ mealName: "Standard (sandwich)", price: 0 },
+		{ mealName: "Premium (lobster)", price: 34.95 },
+		{ mealName: "Ultimate (whole zebra)", price: 290 }
+	];
+
+	// Editable data
+	self.seats = ko.observableArray([
+		new SeatReservation("Steve", self.availableMeals[0]),
+		new SeatReservation("Bert", self.availableMeals[0]),
+	]);
+}
+
+ko.applyBindings(new ReservationsViewModel());
