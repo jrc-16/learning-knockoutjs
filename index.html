@@ -7,11 +7,12 @@
 <body>
 	<!-- 
 	/** 
-	 * @TODO: add description as to what this html is/does
+	 * foreach is control flow binding: 
+	 * In this demo it generates a repeating block of table rows and cells
 	 */
 	-->
 
-	<!-- // @TODO: add inline descriptions for what each pieace of html is/does -->
+	
 
 	<h2>Your seat reservations</h2>
 
@@ -19,7 +20,7 @@
 		<tbody data-bind="foreach: seats">
 		    <tr>
 		        <td data-bind="text: name"></td>
-		        <td data-bind="text: meal().mealName"></td>
+		        <td data-bind="text: meal().mealName"></td><!-- // Access the meal objects properties by inkoving (meal is a ko observable) -->
 		        <td data-bind="text: meal().price"></td>
 		    </tr>
 		</tbody>
