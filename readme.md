@@ -14,6 +14,7 @@ Example of using a foreach binding to iterate over the 'seats' observable array
 
     <!-- Todo: Generate table body -->
 </table>	
+```
 
 Example of using an observable array. 'seats' it used by the foreach example above
 
@@ -24,4 +25,5 @@ self.seats = ko.observableArray([
 	new SeatReservation("Steve", self.availableMeals[0]),
 	new SeatReservation("Bert", self.availableMeals[0]),
 ]);
+```
 
