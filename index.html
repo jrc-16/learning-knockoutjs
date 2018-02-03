@@ -8,12 +8,11 @@
 <body>
 	<!--
 	/**
-	 * foreach is control flow binding:
-	 * In this demo it generates a repeating block of table rows and cells
+	 * In this step we
+	 - add a button which has a click data binding
+	 - onclick, a new reservation is added (using the observableArray push method)
 	 */
 	-->
-
-
 
 	<h2>Your seat reservations</h2>
 
@@ -30,10 +29,14 @@
 			<tr>
 				<td data-bind="text: name"></td>
 				<td data-bind="text: meal().mealName"></td>
-				<!-- // Access the meal objects properties by inkoving (meal is a ko observable) -->
 				<td data-bind="text: meal().price"></td>
 			</tr>
 		</tbody>
+
+		<!-- // Step 2.2 -->
+		<div>
+			<button data-bind="click: $root.addSeat">Reserve another seat</button>
+		</div>
 
 		<!-- Todo: Generate table body -->
 	</table>

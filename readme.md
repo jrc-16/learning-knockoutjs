@@ -1,29 +1,28 @@
-Very often, you'll want to generate repeating blocks of UI elements, especially when displaying lists where the user can add and remove elements. Knockout lets you do that easily, using *observable arrays* and the **foreach** binding.
+## (Adding Items > Step 2 of 5) [http://learn.knockoutjs.com/#/?tutorial=collections]
+> Following the MVVM pattern makes it very simple to work with changeable object graphs such as arrays and hierarchies. You update the underlying data, and the UI automatically updates in sync.
 
-Example of using a foreach binding to iterate over the 'seats' observable array
+In this step we
+- add a button which has a click data binding
+- onclick, a new reservation is added (using the observableArray push method)
 
 ```html
 <table>
 	<tbody data-bind="*foreach: seats*">
 	    <tr>
 	        <td data-bind="text: name"></td>
-	        <td data-bind="text: meal().mealName"></td><!-- // Access the meal objects properties by inkoving (meal is a ko observable) -->
+	        <td data-bind="text: meal().mealName"></td><!-- // Access the meal objects properties by invoking (meal is a ko observable) -->
 	        <td data-bind="text: meal().price"></td>
 	    </tr>
 	</tbody>
 
     <!-- Todo: Generate table body -->
-</table>	
+</table>
 ```
 
-Example of using an observable array. 'seats' it used by the foreach example above
+Push another SeatReservation instance onto the seats observableArray
 
 ```javascript
-// seats is an observable array which contains reseravation
-// objects
-self.seats = ko.observableArray([
-	new SeatReservation("Steve", self.availableMeals[0]),
-	new SeatReservation("Bert", self.availableMeals[0]),
-]);
+self.addSeat = function() {
+	self.seats.push(new SeatReservation("", self.availableMeals[0]));
+};
 ```
-

@@ -1,5 +1,6 @@
 /**
- * Loop through a list of people and display a meal 
+ * Add a button to push another SeatReservation instance onto the
+ * seats observableArray
  */
 
 // Class to represent a row in the seat reservations grid
@@ -29,6 +30,11 @@ function ReservationsViewModel() {
 		new SeatReservation("Steve", self.availableMeals[0]),
 		new SeatReservation("Bert", self.availableMeals[0]),
 	]);
+
+	// push another SeatReservation instance onto the seats observableArray
+	self.addSeat = function() {
+		self.seats.push(new SeatReservation("", self.availableMeals[0]));
+	};
 }
 
 ko.applyBindings(new ReservationsViewModel());
