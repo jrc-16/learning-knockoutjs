@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Title of the document</title>
+	<title>Title of the document</title>
 </head>
 
 <body>
-	<!-- 
-	/** 
-	 * foreach is control flow binding: 
+	<!--
+	/**
+	 * foreach is control flow binding:
 	 * In this demo it generates a repeating block of table rows and cells
 	 */
 	-->
 
-	
+
 
 	<h2>Your seat reservations</h2>
 
 	<table>
+		<thead>
+			<tr>
+				<th>Passenger name</th>
+				<th>Meal</th>
+				<th>Surcharge</th>
+				<th></th>
+			</tr>
+		</thead>
 		<tbody data-bind="foreach: seats">
-		    <tr>
-		        <td data-bind="text: name"></td>
-		        <td data-bind="text: meal().mealName"></td><!-- // Access the meal objects properties by inkoving (meal is a ko observable) -->
-		        <td data-bind="text: meal().price"></td>
-		    </tr>
+			<tr>
+				<td data-bind="text: name"></td>
+				<td data-bind="text: meal().mealName"></td>
+				<!-- // Access the meal objects properties by inkoving (meal is a ko observable) -->
+				<td data-bind="text: meal().price"></td>
+			</tr>
 		</tbody>
 
-	    <!-- Todo: Generate table body -->
-	</table>	
-	
+		<!-- Todo: Generate table body -->
+	</table>
+
 </body>
 <script type="text/javascript" src="js/knockout.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
