@@ -31,6 +31,7 @@ function ReservationsViewModel() {
 		new SeatReservation("Bert", self.availableMeals[0]),
 	]);
 
+	// >>> Step 2.2 <<<
 	// push another SeatReservation instance onto the seats observableArray
 	self.addSeat = function() {
 		self.seats.push(new SeatReservation("", self.availableMeals[0]));

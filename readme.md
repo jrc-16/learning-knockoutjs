@@ -14,9 +14,11 @@ In this step we
 	        <td data-bind="text: meal().price"></td>
 	    </tr>
 	</tbody>
-
-    <!-- Todo: Generate table body -->
 </table>
+<!-- // Step 2.2 -->
+<div>
+	<button data-bind="click: $root.addSeat">Reserve another seat</button>
+</div>
 ```
 
 Push another SeatReservation instance onto the seats observableArray
