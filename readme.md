@@ -1,30 +1,28 @@
-## (Adding Items > Step 2 of 5) [http://learn.knockoutjs.com/#/?tutorial=collections]
-> Following the MVVM pattern makes it very simple to work with changeable object graphs such as arrays and hierarchies. You update the underlying data, and the UI automatically updates in sync.
+## (Adding Items > Step 3 of 5)[http://learn.knockoutjs.com/#/?tutorial=collections]
+> You can use bindings within foreach blocks just the same as anywhere else, so it's pretty easy to upgrade what we've got into a full data editor.
 
 In this step we
-- add a button which has a click data binding
-- onclick, a new reservation is added (using the observableArray push method)
+- Changed the Name table cell into an input field.
+- Changed the mealName field to drop down menu.
+- Added a computed observable that updates the price when a new drop down item is chosen.
+- Added new observable property 'formattedPrice' which updates when a different option is chosen from the dropdown menu.
 
 ```html
-<table>
-	<tbody data-bind="*foreach: seats*">
-	    <tr>
-	        <td data-bind="text: name"></td>
-	        <td data-bind="text: meal().mealName"></td><!-- // Access the meal objects properties by invoking (meal is a ko observable) -->
-	        <td data-bind="text: meal().price"></td>
-	    </tr>
-	</tbody>
-</table>
-<!-- // Step 2.2 -->
-<div>
-	<button data-bind="click: $root.addSeat">Reserve another seat</button>
-</div>
+<!-- // Step 3 -->
+<td>
+	<input data-bind="value: name"/>
+</td>
+<td>
+	<select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'" /></select>
+</td>
+<td data-bind="text: formattedPrice"></td>
+
 ```
 
-Push another SeatReservation instance onto the seats observableArray
-
 ```javascript
-self.addSeat = function() {
-	self.seats.push(new SeatReservation("", self.availableMeals[0]));
-};
+<!-- // Step 3 -->
+self.formattedPrice = ko.computed(function() {
+	var price = self.meal().price;
+	return price ? "$" + price.toFixed(2) : "None";
+});
 ```

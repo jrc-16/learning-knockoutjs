@@ -10,6 +10,12 @@ function SeatReservation(name, initalMeal) {
 	var self = this; // Set 'this' to this functions scope
 	self.name = name;
 	self.meal = ko.observable(initalMeal);
+
+	// >>> Step 3 <<<
+	self.formattedPrice = ko.computed(function() {
+		var price = self.meal().price;
+		return price ? "$" + price.toFixed(2) : "None";
+	});
 }
 
 // Overall viewmodel for this screen, along with initial state
@@ -31,7 +37,6 @@ function ReservationsViewModel() {
 		new SeatReservation("Bert", self.availableMeals[0]),
 	]);
 
-	// >>> Step 2.2 <<<
 	// push another SeatReservation instance onto the seats observableArray
 	self.addSeat = function() {
 		self.seats.push(new SeatReservation("", self.availableMeals[0]));
