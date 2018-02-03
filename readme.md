@@ -4,8 +4,8 @@
 In this step we
 - Changed the Name table cell into an input field.
 - Changed the mealName field to drop down menu.
-- Added a computed observable that updates the price when a new drop down item is chosen.
-- Added new observable property 'formattedPrice' which updates when a different option is chosen from the dropdown menu.
+- A computed observable 'formattedPrice' that checks for an updated price when a new drop down item is chosen.
+- Added 'formattedPrice' which updates when a different option is chosen from the dropdown menu.
 
 ```html
 <!-- // Step 3 -->

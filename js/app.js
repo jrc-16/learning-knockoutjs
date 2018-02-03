@@ -1,8 +1,3 @@
-/**
- * Add a button to push another SeatReservation instance onto the
- * seats observableArray
- */
-
 // Class to represent a row in the seat reservations grid
 // Notice we use upper case 'S' to denote a Constructor function
 //
