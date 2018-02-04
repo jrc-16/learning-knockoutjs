@@ -1,15 +1,12 @@
-# @TODO: amend information for step 4
-
 ## [Removing items and showing a total surcharge > Step 4 of 5](http://learn.knockoutjs.com/#/?tutorial=collections)
 > Since you can add items, you should be able to remove them too, right? As you'd expect, this is merely a matter of updating the underlying data.
 
 In this step we
 - Added a click binding to refer to the removeSeat method in the ViewModel
-- Remove the selected reservation from the seats observableArray
+- Removed the selected reservation from the seats observableArray
 - Added a visible binding to display the containing html when totalSurcharge property is greater than 0
 - Iterate through the seats observableArray, add all price properties together and return the total
 - Display the totalSurcharge computed observable (which contains the total price)
--
 
 ```html
 <!-- // Step 4 -->
