@@ -1,3 +1,5 @@
+# @TODO: amend information for step 4
+
 ## [Making the data editable > Step 3 of 5](http://learn.knockoutjs.com/#/?tutorial=collections)
 > You can use bindings within foreach blocks just the same as anywhere else, so it's pretty easy to upgrade what we've got into a full data editor.
 
