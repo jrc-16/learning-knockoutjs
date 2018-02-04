@@ -16,23 +16,29 @@
 		</thead>
 		<tbody data-bind="foreach: seats">
 			<tr>
-				<!-- // Step 3 -->
 				<td><input data-bind="value: name"/></td>
 				<td>
 					<select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'" /></select>
 				</td>
 				<td data-bind="text: formattedPrice"></td>
 				<td>
+					<!-- // Step 4 -->
 					<a data-bind="click: $root.removeSeat" href="#">Remove</a>
+					<!-- // Step 4 -->
 				</td>
-				<!-- // Step 3 END -->
 			</tr>
 		</tbody>
 	</table>
 
 	<div>
 		<button data-bind="click: $root.addSeat">Reserve another seat</button>
-		<p data-bind="text: totalSurcharge"></p>
+
+		<!-- // Step 4 -->
+		<h3 data-bind="visible: totalSurcharge() > 0">
+			Total surcharge: $<span data-bind="text: totalSurcharge"></span>
+		</h3>
+		<!-- // Step 4 END-->
+
 	</div>
 </body>
 <script type="text/javascript" src="js/knockout.js"></script>
