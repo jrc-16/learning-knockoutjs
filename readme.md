@@ -52,3 +52,14 @@ self.totalSurcharge = ko.computed(function() {
 	return totalNum;
 });
 ```
+
+The Knockout official code
+
+```javascript
+self.totalSurcharge = ko.computed(function() {
+   var total = 0;
+   for (var i = 0; i < self.seats().length; i++)
+       total += self.seats()[i].meal().price;
+   return total;
+});
+```
