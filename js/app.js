@@ -14,6 +14,8 @@ function SeatReservation(name, initalMeal) {
 
 // Overall viewmodel for this screen, along with initial state
 function ReservationsViewModel() {
+
+
   var self = this;
 
   // Non editable catalog data - would come from the server
@@ -75,7 +77,7 @@ function ReservationsViewModel() {
     });
 
 		return totalNum;
-  });
+  });  
 }
 
 ko.applyBindings(new ReservationsViewModel());
