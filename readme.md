@@ -1,22 +1,41 @@
-## [Final niceties > Step 5 of 5](http://learn.knockoutjs.com/#/?tutorial=collections)
-> Having followed the MVVM pattern and got an object-oriented representation of the UI's data and behaviors, you're in a great position to sprinkle on extra behaviors in a very natural and convenient way.
+## [Single page applications > Step 1 of 5](http://learn.knockoutjs.com/#/?tutorial=webmail)
+> Many of the most modern, responsive, and engaging web-based UIs have gone beyond traditional Ajax and have become single page applications: the visitor can seemingly navigate within a single page at the speed of a native application.
+
+> The best-known example is probably GMail, but these days it's an increasingly widespread technique. Such applications use hash-based or pushState navigation to support back/forward gestures and bookmarking. I
 
 In this step we
-- Displayed the amount of seats reserved using the array length property
-- Displayed a warning only when the seat reservation was exceeded. This was done by using the `visible` binding to toggle display of elements and using the `css` binding to apply a red background
-- Used the `enable` binding to disable the reservation button when the seats().length exceeds 6
+- Began to create a Web Mail Client
+- We created a list of folders
+- Made the folders clickable using Observables
+- Added Bootstrap CSS and Open Iconic so to give the UI a better look
 
 
 ```html
-<!-- // Step 5 -->
-<h2>Your seat reservations
-	<span data-bind="text: seats().length"></span>
-</h2>
+<!-- // Step 1 -->
+<ul data-bind="foreach: folders" class="folders">
 
-<div data-bind="visible: seats().length === 6, css: {'warning': seats().length === 6}">
-	<p>Total amount of reservations exceeded</p>
-</div>
+	<!-- If the name of the folder we clicked on is in the folders array, apply the aler-dark class  -->
+	<li data-bind="click: $parent.goToFolder,
+	css: {'alert alert-dark' : $data == $parent.chosenFolderId()}">
+		<span data-bind="text: $data" class="oi oi-folder"></span>
+	</li>
+</ul>
+<!-- // Step 1 END-->
+```
 
-<button data-bind="click: $root.addSeat, enable: seats().length < 6">Reserve another seat</button>
-<!-- // Step 5 END-->
+```js
+// the viewmodel class
+function WebmailViewModel() {
+  var self = this;
+
+  // Properties
+  self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
+  self.chosenFolderId = ko.observable();
+
+  // Methods
+  self.goToFolder = function( folder ) {
+    self.chosenFolderId( folder );
+    // console.log('chosenFolderId called');
+  };
+}
 ```
