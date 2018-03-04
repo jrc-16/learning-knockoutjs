@@ -3,57 +3,31 @@
 
 <head>
 	<title>Title of the document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css" />
+
 	<style>
-		.warning {
-			background: #ff4f4f;
-			padding: 1px 10px;
-			border-radius: 3px;
+		.folders li {
+			list-style-type: none;
 		}
 	</style>
 </head>
+	<!--
+	// The WebmailViewModel is the class we applyBindings to.
+	// We can access viewmodel properties such as folders directly.
+	// We access array properties using $data.
+	-->
+	<ul data-bind="foreach: folders" class="folders">
 
+		<!-- If the name of the folder we clicked on is in the folders array, apply the aler-dark class  -->
+		<li data-bind="click: $parent.goToFolder,
+		css: {'alert alert-dark' : $data == $parent.chosenFolderId()}">
+			<span data-bind="text: $data" class="oi oi-folder"></span>
+		</li>
+	</ul>
 <body>
-	<h2>Your seat reservations
-		<span data-bind="text: seats().length"></span>
-	</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>Passenger name</th>
-				<th>Meal</th>
-				<th>Surcharge</th>
-			</tr>
-		</thead>
-		<tbody data-bind="foreach: seats">
-			<tr>
-				<td><input data-bind="value: name" /></td>
-				<td>
-					<select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'" /></select>
-				</td>
-				<td data-bind="text: formattedPrice"></td>
-				<td>
-					<!-- // Step 4 -->
-					<a data-bind="click: $root.removeSeat" href="#">Remove</a>
-					<!-- // Step 4 -->
-				</td>
-			</tr>
-		</tbody>
-	</table>
 
-	<div>
-		<div data-bind="visible: seats().length === 6, css: {'warning': seats().length === 6}">
-			<p>Maximum amount of reseravations made</p>
-		</div>
-
-		<button data-bind="click: $root.addSeat, enable: seats().length < 6 ">Reserve another seat</button>
-
-		<!-- // Step 4 -->
-		<h3 data-bind="visible: totalSurcharge() > 0">
-			Total surcharge: $<span data-bind="text: totalSurcharge"></span>
-		</h3>
-		<!-- // Step 4 END-->
-
-	</div>
 </body>
 <script type="text/javascript" src="js/knockout.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
