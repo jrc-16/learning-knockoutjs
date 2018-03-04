@@ -1,0 +1,21 @@
+{
+  "name": "learning-knockoutjs",
+  "version": "1.0.0",
+  "description": "> Now the visitor can choose a folder, let's show them the mails in that folder.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrcarney/learning-knockoutjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrcarney/learning-knockoutjs/issues"
+  },
+  "homepage": "https://github.com/jrcarney/learning-knockoutjs#readme",
+  "dependencies": {
+    "server": "^1.0.18"
+  }
+}

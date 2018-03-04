@@ -1,0 +1,27 @@
+{
+  "mail": [{
+      "first_name": "Georgina",
+      "last_name": "Pembridge",
+      "email": "gpembridge0@fc2.com",
+      "folder": "Inbox"
+    },
+    {
+      "first_name": "Lorry",
+      "last_name": "Cobbold",
+      "email": "lcobbold1@shinystat.com",
+      "folder": "Spam"
+    },
+    {
+      "first_name": "Elisabetta",
+      "last_name": "Measor",
+      "email": "emeasor2@meetup.com",
+      "folder": "Archive"
+    },
+    {
+      "first_name": "Done",
+      "last_name": "Whan",
+      "email": "whan@thedon.com",
+      "folder": "Archive"
+    }
+  ]
+}
