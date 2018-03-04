@@ -1,7 +1,7 @@
 ## [Single page applications > Step 1 of 5](http://learn.knockoutjs.com/#/?tutorial=webmail)
 > Many of the most modern, responsive, and engaging web-based UIs have gone beyond traditional Ajax and have become single page applications: the visitor can seemingly navigate within a single page at the speed of a native application.
 
-> The best-known example is probably GMail, but these days it's an increasingly widespread technique. Such applications use hash-based or pushState navigation to support back/forward gestures and bookmarking. I
+> The best-known example is probably GMail, but these days it's an increasingly widespread technique. Such applications use hash-based or pushState navigation to support back/forward gestures and bookmarking.
 
 In this step we
 - Began to create a Web Mail Client
