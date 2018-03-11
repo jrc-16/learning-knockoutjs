@@ -18,10 +18,8 @@ function WebmailViewModel() {
         folder: folder
       },
       function(data) {
-
         // debugger
         self.chosenFolderData([]);
-
         var parsedJson = JSON.parse(data);
 
         console.log("parsed data is: ");
@@ -42,6 +40,8 @@ function WebmailViewModel() {
     //   console.log( data );
     // });
   };
+
+  self.goToFolder( 'Inbox' );
 }
 
 ko.applyBindings(new WebmailViewModel());
