@@ -3,7 +3,7 @@
 function WebmailViewModel() {
   var self = this;
 
-  console.log("test");
+  console.log("test"); 
 
   // Properties
   self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
