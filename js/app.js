@@ -3,7 +3,7 @@
 function WebmailViewModel() {
   var self = this;
 
-  console.log("test"); 
+  console.log("test");
 
   // Properties
   self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
@@ -16,11 +16,10 @@ function WebmailViewModel() {
 
     // $.get('mockdata.json', {folder: folder}, self.chosenFolderData);
 
-
     // works
     $.get('/mail', {folder: folder},
     function( data ) {
-debugger
+      // debugger
 
       var parsedJson = JSON.parse( data );
 
@@ -34,9 +33,10 @@ debugger
         }
       }
 
-    } );
+    } ); // END $.get()
 
-    // Net Ninja tut for jquery ajax
+    // Net Ninja tut for jquery ajax:
+    // See https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc44MH
     // $.get('mail.json', function(data) {
     //   debugger
     //

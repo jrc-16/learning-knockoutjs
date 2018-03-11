@@ -29,16 +29,19 @@
 		</li>
 	</ul>
 
-
+	<!--
+		// Display folder
+	-->
 	<div data-bind="with: chosenFolderData">
-		
 		<p data-bind="text: $data.first_name"></p>
 		<p data-bind="text: $data.last_name"></p>
 		<p data-bind="text: $data.email"></p>
-
 	</div>
 
-<!-- tweets example -->
+<!--
+	// Net ninja tweets example
+	// See https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc44MH
+-->
 <!-- <div data-bind="with: chosenFolderData">
 	<div data-bind="foreach: tweets">
 	<p data-bind="text: $data.content"></p>
