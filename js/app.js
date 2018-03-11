@@ -42,6 +42,8 @@ function WebmailViewModel() {
     //   console.log( data );
     // });
   };
+
+  self.goToFolder( 'Inbox' );
 }
 
 ko.applyBindings(new WebmailViewModel());
