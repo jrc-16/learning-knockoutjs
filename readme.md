@@ -1,40 +1,74 @@
 ## [Displaying a grid of mails > Step 2 of 5](http://learn.knockoutjs.com/#/?tutorial=webmail)
 > Now the visitor can choose a folder, let's show them the mails in that folder.
 
-In this step we
+In this step we:
 - Added the jQuery `$.get()` method
   - in the `$.get()` we refer to the `mail` file
   - loop through it and if the folder we clicked on matches the current iterated `mail` folder entry, display it
-- Use a Knockout `with` binding to display one folder ( at time of writing (11/03/18) currently a limitation )
+- Changed to chosenFolderData from an observable to an observableArray so we can push multiple emails into a group
+- Used push() on the observableArray
+- Changed `with` binding to `foreach` so to loop through the array of objects
+- Added table markup so make the UI look more like an email client
 
 ```html
 <!-- // Step 2 -->
-<div data-bind="with: chosenFolderData">
-  <p data-bind="text: $data.first_name"></p>
-  <p data-bind="text: $data.last_name"></p>
-  <p data-bind="text: $data.email"></p>
-</div>
+
+<!-- Print all folders -->
+<table class="table" style="margin-bottom:0 ;">
+  <tbody>
+    <tr data-bind="foreach: folders" class="folders">
+      <td data-bind="click: $parent.goToFolder,
+      css: {'alert alert-dark' : $data == $parent.chosenFolderId()}" scope="col">
+        <span data-bind="text: $data" class="oi oi-folder"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--
+  // Display all emails
+-->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Fist name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody data-bind="foreach: chosenFolderData">
+    <tr>
+      <td data-bind="text: $data.first_name" scope="row"></td>
+      <td data-bind="text: $data.last_name">Mark</td>
+      <td data-bind="text: $data.email">Otto</td>
+    </tr>
+  </tbody>
+</table>
 <!-- // Step 2 END-->
 ```
 
 ```js
-$.get('/mail', {folder: folder},
-function( data ) {
-  // debugger
+// Step 2
+$.get('/mail', {
+    folder: folder
+  },
+  function(data) {
 
-  var parsedJson = JSON.parse( data );
+    // debugger
+    self.chosenFolderData([]);
 
-  console.log( "parsed data is: " );
-  console.log( data );
+    var parsedJson = JSON.parse(data);
 
-  // @JC 4/3//18: i need to make chosenFolderData an observable array so that i can push multiple folder types. currnelty, the problem is only the last folder type is being used.
-  for(var i=0; parsedJson.mail.length > i; i++) {
-    if(parsedJson.mail[ i ].folder === folder) {
-      self.chosenFolderData(parsedJson.mail[ i ]);
+    console.log("parsed data is: ");
+    console.log(data);
+
+    for (var i = 0; parsedJson.mail.length > i; i++) {
+      if (parsedJson.mail[i].folder === folder) {
+        self.chosenFolderData.push(parsedJson.mail[i]);
+      }
     }
-  }
-
-} ); // END $.get()
+  }); // END $.get()
+  // Step 2 END
 ```
 
 ## Resources

@@ -8,32 +8,31 @@ function WebmailViewModel() {
   // Properties
   self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
   self.chosenFolderId = ko.observable();
-  self.chosenFolderData = ko.observable();
+  self.chosenFolderData = ko.observableArray( [] );
 
   // Methods
   self.goToFolder = function( folder ) {
     self.chosenFolderId( folder );
 
-    // $.get('mockdata.json', {folder: folder}, self.chosenFolderData);
+    $.get('/mail', {
+        folder: folder
+      },
+      function(data) {
 
-    // works
-    $.get('/mail', {folder: folder},
-    function( data ) {
-      // debugger
+        // debugger
+        self.chosenFolderData([]);
 
-      var parsedJson = JSON.parse( data );
+        var parsedJson = JSON.parse(data);
 
-      console.log( "parsed data is: " );
-      console.log( data );
+        console.log("parsed data is: ");
+        console.log(data);
 
-      // @JC 4/3//18: i need to make chosenFolderData an observable array so that i can push multiple folder types. currnelty, the problem is only the last folder type is being used.
-      for(var i=0; parsedJson.mail.length > i; i++) {
-        if(parsedJson.mail[ i ].folder === folder) {
-          self.chosenFolderData(parsedJson.mail[ i ]);
+        for (var i = 0; parsedJson.mail.length > i; i++) {
+          if (parsedJson.mail[i].folder === folder) {
+            self.chosenFolderData.push(parsedJson.mail[i]);
+          }
         }
-      }
-
-    } ); // END $.get()
+      }); // END $.get()
 
     // Net Ninja tut for jquery ajax:
     // See https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc44MH

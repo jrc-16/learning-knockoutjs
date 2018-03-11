@@ -6,6 +6,24 @@
       "folder": "Inbox"
     },
     {
+        "first_name": "Chris",
+        "last_name": "De burgh",
+        "email": "snowman0xmas.com",
+        "folder": "Inbox"
+    },
+    {
+        "first_name": "test",
+        "last_name": "skeet",
+        "email": "broforce@force.co.uk",
+        "folder": "Inbox"
+    },
+    {
+        "first_name": "Peter",
+        "last_name": "Griffen",
+        "email": "familyguy.com",
+        "folder": "Inbox"
+    },
+    {
       "first_name": "Lorry",
       "last_name": "Cobbold",
       "email": "lcobbold1@shinystat.com",

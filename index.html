@@ -13,36 +13,62 @@
 		}
 	</style>
 </head>
+
 <body>
-	<h1>test</h1>
+
 	<!--
 	// The WebmailViewModel is the class we applyBindings to.
 	// We can access viewmodel properties such as folders directly.
 	// We access array properties using $data.
 	-->
-	<ul data-bind="foreach: folders" class="folders">
+	<!-- <ul data-bind="foreach: folders" class="folders">
 
-		<!-- If the name of the folder we clicked on is in the folders array, apply the aler-dark class  -->
+		<!-- If the name of the folder we clicked on is in the folders array, apply the aler-dark class  - ->
 		<li data-bind="click: $parent.goToFolder,
 		css: {'alert alert-dark' : $data == $parent.chosenFolderId()}">
 			<span data-bind="text: $data" class="oi oi-folder"></span>
 		</li>
-	</ul>
+	</ul> -->
 
 	<!--
-		// Display folder
+		// Print all folders
 	-->
-	<div data-bind="with: chosenFolderData">
-		<p data-bind="text: $data.first_name"></p>
-		<p data-bind="text: $data.last_name"></p>
-		<p data-bind="text: $data.email"></p>
-	</div>
+	<table class="table" style="margin-bottom:0 ;">
+		<tbody>
+			<tr data-bind="foreach: folders" class="folders">
+				<td data-bind="click: $parent.goToFolder,
+				css: {'alert alert-dark' : $data == $parent.chosenFolderId()}" scope="col">
+					<span data-bind="text: $data" class="oi oi-folder"></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-<!--
+	<!--
+		// Display all emails
+	-->
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Fist name</th>
+				<th scope="col">Last name</th>
+				<th scope="col">Email</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: chosenFolderData">
+			<tr>
+				<td data-bind="text: $data.first_name" scope="row"></td>
+				<td data-bind="text: $data.last_name">Mark</td>
+				<td data-bind="text: $data.email">Otto</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!--
 	// Net ninja tweets example
 	// See https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc44MH
 -->
-<!-- <div data-bind="with: chosenFolderData">
+	<!-- <div data-bind="with: chosenFolderData">
 	<div data-bind="foreach: tweets">
 	<p data-bind="text: $data.content"></p>
 	</div>
@@ -50,10 +76,7 @@
 
 </body>
 <script type="text/javascript" src="js/knockout.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
 </html>
