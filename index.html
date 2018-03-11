@@ -56,13 +56,32 @@
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: chosenFolderData">
-			<tr>
+			<tr data-bind="click: $parent.openEmail">
 				<td data-bind="text: $data.first_name" scope="row"></td>
 				<td data-bind="text: $data.last_name">Mark</td>
 				<td data-bind="text: $data.email">Otto</td>
 			</tr>
 		</tbody>
 	</table>
+
+	<!-- <div data-bind="with: displayEmail" class="well">
+		<p data-bind="text: $data.content"></p>
+	</div> -->
+
+	<!-- <div class="card">
+	  <div data-bind="with: displayEmail" class="card-body">
+	    <p data-bind="text: $data.content"></p>
+	  </div>
+	</div> -->
+
+	<div data-bind="with: displayEmail" class="card">
+	  <div data-bind="text: email" class="card-header"></div>
+	  <div class="card-body">
+	    <h5 data-bind="text: first_name" class="card-title"></h5>
+	    <p data-bind="text: content" class="card-text"></p>
+	  </div>
+	</div>
+
 
 	<!--
 	// Net ninja tweets example

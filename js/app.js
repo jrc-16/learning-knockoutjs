@@ -3,12 +3,11 @@
 function WebmailViewModel() {
   var self = this;
 
-  console.log("test");
-
   // Properties
   self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
   self.chosenFolderId = ko.observable();
   self.chosenFolderData = ko.observableArray( [] );
+  self.displayEmail = ko.observable();
 
   // Methods
   self.goToFolder = function( folder ) {
@@ -18,7 +17,7 @@ function WebmailViewModel() {
         folder: folder
       },
       function(data) {
-        // debugger
+        debugger
         self.chosenFolderData([]);
         var parsedJson = JSON.parse(data);
 
@@ -39,6 +38,32 @@ function WebmailViewModel() {
     //
     //   console.log( data );
     // });
+  };
+
+  self.openEmail = function( folder ) {
+    self.displayEmail("");
+
+    $.get('/mail', {
+        folder: folder
+      },
+      function(data) {
+        debugger
+        // self.chosenFolderData([]);
+        var parsedJson = JSON.parse(data);
+
+        console.log("parsed data is: ");
+        console.log(data);
+
+        for (var i = 0; parsedJson.mail.length > i; i++) {
+          if (folder.id && parsedJson.mail[i].id === folder.id) {
+            if( !parsedJson.mail[i].content ) {
+              parsedJson.mail[i].content = " ";
+            }
+            self.displayEmail(parsedJson.mail[i]);
+          }
+        }
+      }); // END $.get()
+
   };
 
   self.goToFolder( 'Inbox' );

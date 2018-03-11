@@ -3,43 +3,51 @@
       "first_name": "Georgina",
       "last_name": "Pembridge",
       "email": "gpembridge0@fc2.com",
-      "folder": "Inbox"
+      "content": "Lots of content here...",
+      "folder": "Inbox",
+      "id": "0"
     },
     {
-        "first_name": "Chris",
-        "last_name": "De burgh",
-        "email": "snowman0xmas.com",
-        "folder": "Inbox"
+      "first_name": "Chris",
+      "last_name": "De burgh",
+      "email": "snowman0xmas.com",
+      "folder": "Inbox",
+      "id": "1"
     },
     {
-        "first_name": "test",
-        "last_name": "skeet",
-        "email": "broforce@force.co.uk",
-        "folder": "Inbox"
+      "first_name": "test",
+      "last_name": "skeet",
+      "email": "broforce@force.co.uk",
+      "folder": "Inbox",
+      "id": "2"
     },
     {
-        "first_name": "Peter",
-        "last_name": "Griffen",
-        "email": "familyguy.com",
-        "folder": "Inbox"
+      "first_name": "Peter",
+      "last_name": "Griffen",
+      "email": "familyguy.com",
+      "folder": "Inbox",
+      "id": "3"
     },
     {
       "first_name": "Lorry",
       "last_name": "Cobbold",
       "email": "lcobbold1@shinystat.com",
-      "folder": "Spam"
+      "folder": "Spam",
+      "id": "4"
     },
     {
       "first_name": "Elisabetta",
       "last_name": "Measor",
       "email": "emeasor2@meetup.com",
-      "folder": "Archive"
+      "folder": "Archive",
+      "id": "5"
     },
     {
       "first_name": "Done",
       "last_name": "Whan",
       "email": "whan@thedon.com",
-      "folder": "Archive"
+      "folder": "Archive",
+      "id": "6"
     }
   ]
 }
