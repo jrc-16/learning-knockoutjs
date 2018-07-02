@@ -1,8 +1,8 @@
-## [Displaying a grid of mails > Step 2 of 5](http://learn.knockoutjs.com/#/?tutorial=webmail)
-> Now the visitor can choose a folder, let's show them the mails in that folder.
+## [Displaying a grid of mails > Step 3 of 5](http://learn.knockoutjs.com/#/?tutorial=webmail)
+> @TODO
 
 In this step we:
-markup so make the UI look more like an email client
+@TODO
 
 ```html
 <!-- // Step 3 -->
@@ -16,6 +16,6 @@ markup so make the UI look more like an email client
 ```
 
 ## TODO
-[ ] I think i can get $.get('/mail') into a generic method so can be used by other methods
+[ ] write up the code added to make each selected email row a hightlighted colour
 
 ## Resources

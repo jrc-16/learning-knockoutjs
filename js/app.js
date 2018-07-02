@@ -8,6 +8,8 @@ function WebmailViewModel() {
   self.chosenFolderId = ko.observable();
   self.chosenFolderData = ko.observableArray( [] );
   self.displayEmail = ko.observable();
+  self.selectedEmailId = ko.observable();
+  self.selectedEmail = ko.observable();
 
   // Methods
   self.goToFolder = function( folder ) {
@@ -17,7 +19,6 @@ function WebmailViewModel() {
         folder: folder
       },
       function(data) {
-        debugger
         self.chosenFolderData([]);
         var parsedJson = JSON.parse(data);
 
@@ -41,13 +42,20 @@ function WebmailViewModel() {
   };
 
   self.openEmail = function( folder ) {
+debugger
+    // @JC 02/07/18: Update the observable when we click on the row
+    self.selectedEmailId( folder.id );
+
     self.displayEmail("");
+
+
 
     $.get('/mail', {
         folder: folder
       },
       function(data) {
-        debugger
+
+
         // self.chosenFolderData([]);
         var parsedJson = JSON.parse(data);
 
@@ -60,6 +68,13 @@ function WebmailViewModel() {
               parsedJson.mail[i].content = " ";
             }
             self.displayEmail(parsedJson.mail[i]);
+
+            // dispaly selected email with a coloured row
+
+            // if( self.selectedEmailId() === parsedJson.mail[i].id ) {
+            //   parent.selectedEmailId();
+            // }
+
           }
         }
       }); // END $.get()

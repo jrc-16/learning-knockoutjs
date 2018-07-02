@@ -56,7 +56,9 @@
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: chosenFolderData">
-			<tr data-bind="click: $parent.openEmail">
+
+			<!--  Note: The UI updates after main.js has ran, so we are able to check what we clicked on against each $data.id -->
+			<tr data-bind="click: $parent.openEmail, css: {'alert alert-dark' : $data.id === $parent.selectedEmailId()} ">
 				<td data-bind="text: $data.first_name" scope="row"></td>
 				<td data-bind="text: $data.last_name">Mark</td>
 				<td data-bind="text: $data.email">Otto</td>
