@@ -31,7 +31,7 @@
 	</ul> -->
 
 	<!--
-		// Print all folders
+		// Display folder names
 	-->
 	<table class="table" style="margin-bottom:0 ;">
 		<tbody>
@@ -45,7 +45,7 @@
 	</table>
 
 	<!--
-		// Display all emails
+		// Display the preview of an email
 	-->
 	<table class="table">
 		<thead>
@@ -58,26 +58,19 @@
 		<tbody data-bind="foreach: chosenFolderData">
 
 			<!--  Note: The UI updates after main.js has ran, so we are able to check what we clicked on against each $data.id -->
-			<tr data-bind="click: $parent.openEmail, css: {'alert alert-dark' : $data.id === $parent.selectedEmailId()} ">
+			<tr data-bind="click: $parent.openEmail, css: {'alert alert-dark' : $data.id === $parent.selectedEmail() } ">
 				<td data-bind="text: $data.first_name" scope="row"></td>
-				<td data-bind="text: $data.last_name">Mark</td>
-				<td data-bind="text: $data.email">Otto</td>
+				<td data-bind="text: $data.last_name"></td>
+				<td data-bind="text: $data.email"></td>
 			</tr>
 		</tbody>
 	</table>
 
-	<!-- <div data-bind="with: displayEmail" class="well">
-		<p data-bind="text: $data.content"></p>
-	</div> -->
-
-	<!-- <div class="card">
-	  <div data-bind="with: displayEmail" class="card-body">
-	    <p data-bind="text: $data.content"></p>
-	  </div>
-	</div> -->
-
+	<!--
+		// Display selected email in more detail
+	-->
 	<div data-bind="with: displayEmail" class="card">
-	  <div data-bind="text: email" class="card-header"></div>
+	  <div data-bind="text: from" class="card-header"></div>
 	  <div class="card-body">
 	    <h5 data-bind="text: first_name" class="card-title"></h5>
 	    <p data-bind="text: content" class="card-text"></p>

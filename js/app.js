@@ -8,10 +8,11 @@ function WebmailViewModel() {
   self.chosenFolderId = ko.observable();
   self.chosenFolderData = ko.observableArray( [] );
   self.displayEmail = ko.observable();
-  self.selectedEmailId = ko.observable();
   self.selectedEmail = ko.observable();
 
   // Methods
+
+  // Display contents of each folder
   self.goToFolder = function( folder ) {
     self.chosenFolderId( folder );
 
@@ -41,46 +42,48 @@ function WebmailViewModel() {
     // });
   };
 
+  // Display the contents of an email when we click on the preview
   self.openEmail = function( folder ) {
-debugger
-    // @JC 02/07/18: Update the observable when we click on the row
-    self.selectedEmailId( folder.id );
 
+    // JCARNEY 02/07/18: Update the observable when we click on the row
+    self.selectedEmail( folder.id );
+
+    // Normalise the previous email text
     self.displayEmail("");
 
-
-
+    // Use Jquery ajax to fetch the mail file ( local mock data ).
+    // Once we have it, enter the callback function to process it.
     $.get('/mail', {
         folder: folder
       },
       function(data) {
 
-
-        // self.chosenFolderData([]);
+        // Put the data into JSON format so we can start manipulating it.
         var parsedJson = JSON.parse(data);
 
         console.log("parsed data is: ");
         console.log(data);
 
+        // Loop through the array
         for (var i = 0; parsedJson.mail.length > i; i++) {
           if (folder.id && parsedJson.mail[i].id === folder.id) {
+
+            // If theres no content, set it to an empty string ( helps avoid errors )
             if( !parsedJson.mail[i].content ) {
               parsedJson.mail[i].content = " ";
             }
+
+            // Set the header for displaying detailed emails
+            parsedJson.mail[ i ].from = `${parsedJson.mail[ i ].first_name} ${parsedJson.mail[ i ].last_name}`;
+
+            // Updated the displayEmail observable with the 'mail' portion of the mock data
             self.displayEmail(parsedJson.mail[i]);
-
-            // dispaly selected email with a coloured row
-
-            // if( self.selectedEmailId() === parsedJson.mail[i].id ) {
-            //   parent.selectedEmailId();
-            // }
-
           }
         }
       }); // END $.get()
-
   };
 
+  // Default to the Inbox onload
   self.goToFolder( 'Inbox' );
 }
 
