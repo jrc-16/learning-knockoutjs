@@ -28,3 +28,7 @@ http://localhost:8080/
 As its been a while since picking up this project again, a more simple way to get a Nodejs server up and running is to use the [http-server] (https://www.npmjs.com/package/http-server) module. The project home page details basic installation and usage instructions.
 
 For usage further usage instructions [follow this tutorial](http://jasonwatmore.com/post/2016/06/22/nodejs-setup-simple-http-server-local-web-server)
+
+## Bootstrap styles
+
+The project uses [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) and [Bootstrap Iconic](https://getbootstrap.com/docs/4.0/extend/icons/) so to make the UI look a little nicer : )
